@@ -1,5 +1,9 @@
+@import "../../constants/breakpoints.scss";
+
 .landing-container {
-  padding: 50px;
-  background-color: darkslateblue;
-  color: white;
+  padding: 10px 50px;
+  background-color: #f8f8ff;
+  @media (max-width: $md) {
+    padding: 10px 20px;
+  }
 }

@@ -3,15 +3,16 @@
 .cities-list-card {
   border-radius: 5px;
   padding: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
   margin: 40px 0px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 50px;
   a {
+    color: black;
     text-align: center;
-    color: white;
     text-decoration: none;
+    font-weight: bold;
   }
 
   @media (max-width: $md) {

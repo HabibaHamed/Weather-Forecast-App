@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Dashboard from "../screens/CityDashboard";
 import Landing from "../screens/Landing";
 import { createBrowserHistory } from "history";

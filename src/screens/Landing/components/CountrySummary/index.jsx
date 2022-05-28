@@ -5,31 +5,23 @@ import {
   selectCountry,
   selectCountryWeather,
 } from "../../../../redux/selectors";
+
+import { TiWeatherWindyCloudy } from "react-icons/ti";
+import { BsThermometerSun, BsSunrise, BsSunset } from "react-icons/bs";
+import { FaTemperatureHigh } from "react-icons/fa";
+import { WiHumidity } from "react-icons/wi";
 import "./index.scss";
 
 const CountrySummary = () => {
   const country = useSelector(selectCountry);
 
-  const currentDate = new Date().toLocaleDateString(undefined, {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
   const { current_condition = [], weather = [] } =
     useSelector(selectCountryWeather) || {};
 
   const dispatch = useDispatch();
 
-  const {
-    weatherIconUrl,
-    temp_C,
-    FeelsLikeC,
-    humidity,
-    windspeedKmph,
-    weatherDesc,
-    uvIndex,
-  } = current_condition[0] || {};
+  const { FeelsLikeC, humidity, windspeedKmph, uvIndex } =
+    current_condition[0] || {};
 
   const { sunset, sunrise } = weather[0]?.astronomy?.[0] || {};
 
@@ -45,38 +37,47 @@ const CountrySummary = () => {
 
   return (
     <div className="country-summary-card">
-      <h1 className="country-title">{country}</h1>
-      <p>{currentDate}</p>
-      <div className="summary-content">
-        <img src={weatherIconUrl?.[0]?.value} alt="weather-icon" />
-        <div>
-          <div className="temp-title">{temp_C}&#8451;</div>
-          <div>{weatherDesc?.[0]?.value}</div>
-        </div>
-        <div className="summary-grid">
-          <div className="grid-item">
-            <p>{FeelsLikeC} &#8451;</p>
+      <div className="summary-grid">
+        <div className="grid-item">
+          <FaTemperatureHigh size={60} />
+          <div>
             <span>Feels like</span>
+            <p>{FeelsLikeC} &#8451;</p>
           </div>
-          <div className="grid-item">
-            <p>{windspeedKmph} Km/h</p>
+        </div>
+        <div className="grid-item">
+          <TiWeatherWindyCloudy size={60} />
+          <div>
             <span>Wind</span>
+            <p>{windspeedKmph} Km/h</p>
           </div>
-          <div className="grid-item">
-            <p>{sunset}</p>
+        </div>
+        <div className="grid-item">
+          <BsSunset size={60} />
+          <div>
             <span>Sunset</span>
+            <p>{sunset}</p>
           </div>
-          <div className="grid-item">
-            <p>{humidity} %</p>
+        </div>
+        <div className="grid-item">
+          <WiHumidity size={60} />
+          <div>
             <span>Humidity</span>
+            <p>{humidity} %</p>
           </div>
-          <div className="grid-item">
-            <p>{uvIndex}</p>
+        </div>
+        <div className="grid-item">
+          <BsThermometerSun size={60} />
+          <div>
             <span>UV Index</span>
+            <p>{uvIndex}</p>
           </div>
-          <div className="grid-item">
-            <p>{sunrise}</p>
+        </div>
+        <div className="grid-item">
+          <BsSunrise size={60} />
+          <div>
             <span>Sunrise</span>
+            <p>{sunrise}</p>
           </div>
         </div>
       </div>
