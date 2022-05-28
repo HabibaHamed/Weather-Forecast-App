@@ -1,0 +1,27 @@
+@import "../../../../constants/breakpoints.scss";
+
+.cities-list-card {
+  border-radius: 5px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 40px 0px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 50px;
+  a {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  @media (max-width: $md) {
+    grid-template-columns: auto auto auto;
+  }
+  @media (max-width: $sm) {
+    padding: 20px;
+    grid-template-columns: auto auto;
+  }
+  @media (max-width: $xs) {
+    grid-template-columns: auto;
+  }
+}
