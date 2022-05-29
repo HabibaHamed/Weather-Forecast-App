@@ -28,14 +28,6 @@
     }
   }
 
-  // @media (min-width: $md) and (max-width: $lg) {
-  //   .summary-grid {
-  //     .grid-item {
-  //       flex-basis: 40%;
-  //     }
-  //   }
-  // }
-
   @media (max-width: $md) {
     .summary-grid {
       .grid-item {
@@ -43,13 +35,6 @@
       }
     }
   }
-  // @media (max-width: $sm) {
-  //   .summary-grid {
-  //     .grid-item {
-  //       flex-basis: 40%;
-  //     }
-  //   }
-  // }
 
   @media (max-width: $xs) {
     .summary-grid {

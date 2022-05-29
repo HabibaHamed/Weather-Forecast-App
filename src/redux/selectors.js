@@ -14,3 +14,8 @@ export const selectCities = createSelector(
   (state) => state.weather,
   (weather) => weather.cities
 );
+
+export const selectCurrentCityWeather = createSelector(
+  (state) => state.weather,
+  (weather) => weather.cityWeather
+);

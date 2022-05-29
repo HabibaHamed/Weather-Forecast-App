@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getCitiesByCountry,
+  getCityWeather,
   getCountryWeather,
   getUserCountry,
 } from "./thunks";
 
 const slice = createSlice({
   name: "weatherSlice",
-  initialState: { country: undefined, countryWeather: undefined, cities: [] },
+  initialState: {
+    country: undefined,
+    countryWeather: undefined,
+    cities: [],
+    cityWeather: undefined,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUserCountry.fulfilled, (state, action) => {
@@ -18,6 +24,9 @@ const slice = createSlice({
       })
       .addCase(getCitiesByCountry.fulfilled, (state, action) => {
         state.cities = action.payload.states;
+      })
+      .addCase(getCityWeather.fulfilled, (state, action) => {
+        state.cityWeather = action.payload;
       });
   },
 });

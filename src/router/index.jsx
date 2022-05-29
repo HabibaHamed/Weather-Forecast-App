@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "../screens/CityDashboard";
 import Landing from "../screens/Landing";
 import { createBrowserHistory } from "history";
@@ -7,12 +7,12 @@ export const history = createBrowserHistory();
 
 const NavRouter = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
-        <Route path="/dashboard/:city" component={Dashboard} />
         <Route exact path="/" component={Landing} />
+        <Route path="/dashboard/:country/:city" component={Dashboard} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

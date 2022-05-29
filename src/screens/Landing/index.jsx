@@ -1,4 +1,3 @@
-import { unwrapResult } from "@reduxjs/toolkit";
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -12,11 +11,7 @@ const Landing = () => {
   const dispatch = useDispatch();
   const onLocationSuccess = useCallback(
     ({ coords }) => {
-      dispatch(getUserCountry(coords))
-        .then(unwrapResult)
-        .then((result) => {
-          console.log(result);
-        });
+      dispatch(getUserCountry(coords));
     },
     [dispatch]
   );

@@ -20,7 +20,7 @@ const CitiesList = () => {
   return (
     <section className="cities-list-card">
       {cities.map((city) => (
-        <Link to={`/dashboard/${city.name}`}>
+        <Link to={`/dashboard/${country}/${city.name}`}>
           <span>{city.name}</span>
         </Link>
       ))}
