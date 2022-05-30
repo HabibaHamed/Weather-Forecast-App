@@ -3,6 +3,7 @@ import {
   getCitiesByCountryAPI,
   getUserCountryAPI,
   getWeatherAPI,
+  getWeatherHistoryAPI,
 } from "./services";
 
 export const getUserCountry = createAsyncThunk(
@@ -50,7 +51,7 @@ export const getCityWeatherHistory = createAsyncThunk(
   "weather/city/history",
   async (params) => {
     try {
-      const response = await getWeatherAPI(params);
+      const response = await getWeatherHistoryAPI(params);
       return response.data;
     } catch (error) {}
   }

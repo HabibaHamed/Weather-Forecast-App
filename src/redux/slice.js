@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getCitiesByCountry,
   getCityWeather,
+  getCityWeatherHistory,
   getCountryWeather,
   getUserCountry,
 } from "./thunks";
@@ -13,6 +14,7 @@ const slice = createSlice({
     countryWeather: undefined,
     cities: [],
     cityWeather: undefined,
+    cityWeatherHistory: undefined,
   },
   extraReducers: (builder) => {
     builder
@@ -27,6 +29,9 @@ const slice = createSlice({
       })
       .addCase(getCityWeather.fulfilled, (state, action) => {
         state.cityWeather = action.payload;
+      })
+      .addCase(getCityWeatherHistory.fulfilled, (state, action) => {
+        state.cityWeatherHistory = action.payload;
       });
   },
 });

@@ -9,7 +9,15 @@ const getUserCountryAPI = async ({ latitude, longitude }) => {
 
 const getWeatherAPI = async (params) => {
   const { data } = await axios.get(
-    `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=abf863f4ea8c444492375135222705&format=json`,
+    `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=abf863f4ea8c444492375135222705&format=json&aqi=yes`,
+    { params }
+  );
+  return data;
+};
+
+const getWeatherHistoryAPI = async (params) => {
+  const { data } = await axios.get(
+    `https://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=abf863f4ea8c444492375135222705&format=json`,
     { params }
   );
   return data;
@@ -23,4 +31,9 @@ const getCitiesByCountryAPI = async (data) => {
   return responseData;
 };
 
-export { getUserCountryAPI, getWeatherAPI, getCitiesByCountryAPI };
+export {
+  getUserCountryAPI,
+  getWeatherAPI,
+  getCitiesByCountryAPI,
+  getWeatherHistoryAPI,
+};

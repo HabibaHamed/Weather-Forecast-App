@@ -15,6 +15,7 @@
     .weather-description {
       font-size: 20px;
       margin-top: 0px;
+      margin-bottom: 10px;
     }
     .icon-text-item {
       display: flex;
@@ -31,8 +32,17 @@
     padding: 20px;
     .weather-highlights {
       display: grid;
-      grid-template-columns: auto auto auto;
-      gap: 20px;
+      grid-template-columns: 33% 33% 33%;
+      gap: 10px;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $lg) {
+    .summary-container {
+      .weather-highlights {
+        grid-template-columns: 50% 50%;
+      }
     }
   }
 
@@ -51,5 +61,21 @@
         margin: 10px 0px;
       }
     }
+  }
+  @media (max-width: $xs) {
+    .summary-container {
+      .weather-highlights {
+        grid-template-columns: 100%;
+      }
+    }
+  }
+}
+
+.card-dashboard-highlights {
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  p {
+    font-weight: bold;
   }
 }

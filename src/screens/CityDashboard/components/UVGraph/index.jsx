@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useD3 } from "../../../../hooks/useD3";
 import { selectCurrentCityWeather } from "../../../../redux/selectors";
 import * as d3 from "d3";
+import "../../index.scss";
 
 const UVGraph = () => {
   const { current_condition } = useSelector(selectCurrentCityWeather) || {};
@@ -46,16 +47,9 @@ const UVGraph = () => {
     if (uvIndex) render();
   }, [uvIndex]);
 
-  console.log(graphRef);
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "10px",
-        textAlign: "center",
-      }}
-    >
-      <p style={{ fontWeight: "bold" }}>UV Index</p>
+    <div className="card-dashboard-highlights">
+      <p className="card-title">UV Index</p>
       <div ref={graphRef} style={{ margin: "auto", width: "fit-content" }} />
     </div>
   );

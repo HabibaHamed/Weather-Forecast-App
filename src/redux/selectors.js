@@ -19,3 +19,8 @@ export const selectCurrentCityWeather = createSelector(
   (state) => state.weather,
   (weather) => weather.cityWeather
 );
+
+export const selectCityWeatherHistory = createSelector(
+  (state) => state.weather,
+  (weather) => weather.cityWeatherHistory
+);
