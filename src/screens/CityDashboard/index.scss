@@ -2,7 +2,8 @@
 
 .dashboard-container {
   display: flex;
-  height: 100vh;
+  height: 100%;
+
   .header-container {
     flex-basis: 20%;
     display: flex;
@@ -26,7 +27,11 @@
       }
     }
   }
+  .summary-section-title {
+    color: rgba(0, 0, 0, 0.5);
+  }
   .summary-container {
+    height: 100%;
     flex-basis: 80%;
     background-color: #f8f8ff;
     padding: 20px;

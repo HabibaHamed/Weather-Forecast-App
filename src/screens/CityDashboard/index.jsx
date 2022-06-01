@@ -40,9 +40,16 @@ const Dashboard = () => {
 
   const aqIndex = air_quality?.["us-epa-index"];
 
-  const dashboardCard = (title, value, fontSize = "40px") => (
+  const dashboardCard = (
+    title,
+    value,
+    fontSize = "40px",
+    marginBottom = "16px"
+  ) => (
     <div className="card-dashboard-highlights">
-      <p className="card-title">{title}</p>
+      <p style={{ marginBottom }} className="card-title">
+        {title}
+      </p>
       <h2 style={{ fontSize }}>{value}</h2>
     </div>
   );
@@ -53,34 +60,44 @@ const Dashboard = () => {
   }, [dispatch, params]);
 
   return (
-    <main className="dashboard-container">
-      <div className="header-container">
-        <h1>{temp_C}&#8451;</h1>
-        <p className="weather-description">{weatherDesc?.[0]?.value}</p>
-        <div className="icon-text-item">
-          <MdDateRange size={20} />
-          <span>{currentDate}</span>
+    <main>
+      <div className="dashboard-container">
+        <div className="header-container">
+          <h1>{temp_C}&#8451;</h1>
+          <p className="weather-description">{weatherDesc?.[0]?.value}</p>
+          <div className="icon-text-item">
+            <MdDateRange size={20} />
+            <span>{currentDate}</span>
+          </div>
+          <div className="icon-text-item">
+            <MdLocationPin size={20} />
+            <span>
+              {params.country}, {params.city}
+            </span>
+          </div>
         </div>
-        <div className="icon-text-item">
-          <MdLocationPin size={20} />
-          <span>
-            {params.country}, {params.city}
-          </span>
+        <div className="summary-container">
+          <h3 style={{ color: "rgba(0, 0, 0, 0.5)", marginTop: 0 }}>
+            Today's Highlights
+          </h3>
+          <div className="weather-highlights">
+            {FeelsLikeC && dashboardCard("Feels Like", `${FeelsLikeC}\u2103`)}
+            <UVGraph />
+            {windspeedKmph &&
+              dashboardCard("Wind Status", `${windspeedKmph}km/h`)}
+            <HumidityGraph />
+            {visibility && dashboardCard("Visibility", `${visibility}km`)}
+            {airQualityEPA &&
+              dashboardCard(
+                "Air Quality",
+                airQualityEPA[aqIndex],
+                "25px",
+                "40px"
+              )}
+          </div>
+          <h3 className="summary-section-title">Last Month Temperature</h3>
+          <HistoryWeather />
         </div>
-      </div>
-      <div className="summary-container">
-        <h3 style={{ color: "rgba(0, 0, 0, 0.5)", marginTop: 0 }}>
-          Highlights
-        </h3>
-        <div className="weather-highlights">
-          {dashboardCard("Feels Like", `${FeelsLikeC}\u2103`)}
-          <UVGraph />
-          {dashboardCard("Wind Status", `${windspeedKmph}km/h`)}
-          <HumidityGraph />
-          {dashboardCard("Visibility", `${visibility}km`)}
-          {dashboardCard("Air Quality", airQualityEPA[aqIndex], "25px")}
-        </div>
-        <HistoryWeather />
       </div>
     </main>
   );
