@@ -24,7 +24,7 @@ const HumidityGraph = () => {
       .attr("transform", "translate(0,30)")
       .attr("width", humidityWidth)
       .attr("height", 15)
-      .attr("fill", "#FF8C00");
+      .attr("fill", "#e3830e");
 
     svg
       .append("text")

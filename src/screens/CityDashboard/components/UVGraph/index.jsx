@@ -39,7 +39,7 @@ const UVGraph = () => {
           .startAngle(-1.57)
           .endAngle(uvAngle)
       )
-      .attr("fill", "#FF8C00");
+      .attr("fill", "#e3830e");
     svg
       .append("text")
       .attr("x", 100)

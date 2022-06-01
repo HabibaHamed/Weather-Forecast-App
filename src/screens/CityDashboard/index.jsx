@@ -7,6 +7,7 @@ import { MdLocationPin, MdDateRange } from "react-icons/md";
 import UVGraph from "./components/UVGraph";
 import HumidityGraph from "./components/HumidityGraph";
 import HistoryWeather from "./components/HistoryWeather";
+import MonthlyWeather from "./components/MonthlyWeather";
 import "./index.scss";
 
 const airQualityEPA = {
@@ -97,6 +98,10 @@ const Dashboard = () => {
           </div>
           <h3 className="summary-section-title">Last Month Temperature</h3>
           <HistoryWeather />
+          <h3 className="summary-section-title">
+            Monthly Average Daily Rainfall(mm)
+          </h3>
+          <MonthlyWeather />
         </div>
       </div>
     </main>

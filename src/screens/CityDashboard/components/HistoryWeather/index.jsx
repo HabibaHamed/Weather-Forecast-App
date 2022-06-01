@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCityWeatherHistory } from "../../../../redux/thunks";
 import { useParams } from "react-router-dom";
 import { selectCityWeatherHistory } from "../../../../redux/selectors";
-import "./index.scss";
+import "../../index.scss";
 
 const HEIGHT = 300;
+const margin = { top: 20, right: 0, bottom: 100, left: 20 };
 
 const HistoryWeather = () => {
   const params = useParams();
@@ -19,9 +20,13 @@ const HistoryWeather = () => {
   const { weather = [] } = useSelector(selectCityWeatherHistory) || {};
 
   const { ref: graphRef, render } = useD3((graph) => {
-    const margin = { top: 20, right: 0, bottom: 100, left: 20 };
     graph.selectAll("svg").remove();
     const svg = graph.append("svg").attr("width", WIDTH).attr("height", HEIGHT);
+
+    const adjustedWeather = weather.map((d) => ({
+      ...d,
+      avgTemp: +d.avgtempC,
+    }));
 
     const x_scale = d3
       .scaleBand()
@@ -32,11 +37,6 @@ const HistoryWeather = () => {
       .scaleLinear()
       .range([HEIGHT - margin.bottom, margin.top]);
 
-    const adjustedWeather = weather.map((d) => ({
-      ...d,
-      avgTemp: +d.avgtempC,
-    }));
-
     x_scale.domain(adjustedWeather.map((d) => d.date));
     y_scale.domain([0, d3.max(adjustedWeather, (d) => d.avgTemp)]);
 
@@ -45,6 +45,7 @@ const HistoryWeather = () => {
       .data(adjustedWeather)
       .join("rect")
       .attr("class", "bar")
+      .attr("fill", "#e3830e")
       .attr("x", (d) => x_scale(d.date))
       .attr("y", (d) => y_scale(d.avgTemp))
       .attr("width", x_scale.bandwidth())
@@ -54,11 +55,12 @@ const HistoryWeather = () => {
 
     let y_axis = d3.axisLeft(y_scale);
 
+    //add x axis and rotate labels
     svg
       .append("g")
       .attr("transform", `translate(0,${HEIGHT - margin.bottom})`)
       .call(x_axis)
-      .selectAll("text") // everything from this point is optional
+      .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
