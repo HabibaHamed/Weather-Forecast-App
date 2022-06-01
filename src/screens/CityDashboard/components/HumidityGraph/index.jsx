@@ -26,7 +26,12 @@ const HumidityGraph = () => {
       .attr("height", 15)
       .attr("fill", "#FF8C00");
 
-    svg.append("text").attr("x", 85).attr("y", 80).text(`${humidity}%`);
+    svg
+      .append("text")
+      .attr("x", 85)
+      .attr("y", 80)
+      .attr("font-weight", "bold")
+      .text(`${humidity}%`);
   });
 
   useEffect(() => {

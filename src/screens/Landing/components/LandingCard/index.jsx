@@ -34,13 +34,11 @@ const LandingCard = () => {
   }, [country, dispatch]);
 
   return (
-    <div className="landing-country-container">
+    <div className="landing-country-card">
       <h1 className="country-title">{country}</h1>
+      <p className="temp-title">{temp_C}&#8451;</p>
       <p>{currentDate}</p>
-      <div className="landing-country-card">
-        <p className="temp-title">{temp_C}&#8451;</p>
-        <p>{weatherDesc?.[0]?.value}</p>
-      </div>
+      <p>{weatherDesc?.[0]?.value}</p>
     </div>
   );
 };

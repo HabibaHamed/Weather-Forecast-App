@@ -40,7 +40,12 @@ const UVGraph = () => {
           .endAngle(uvAngle)
       )
       .attr("fill", "#FF8C00");
-    svg.append("text").attr("x", 100).attr("y", 80).text(uvIndex);
+    svg
+      .append("text")
+      .attr("x", 100)
+      .attr("y", 80)
+      .attr("font-weight", "bold")
+      .text(uvIndex);
   });
 
   useEffect(() => {

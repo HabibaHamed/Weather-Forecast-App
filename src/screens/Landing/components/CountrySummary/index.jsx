@@ -39,7 +39,7 @@ const CountrySummary = () => {
     <div className="country-summary-card">
       <div className="summary-grid">
         <div className="grid-item">
-          <FaTemperatureHigh size={60} />
+          <FaTemperatureHigh size={50} />
           <div>
             <span>Feels like</span>
             <p>{FeelsLikeC} &#8451;</p>

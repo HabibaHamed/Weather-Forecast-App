@@ -4,7 +4,7 @@
   border-radius: 5px;
   padding: 40px;
   background-color: white;
-  margin: 40px 0px;
+  margin: 40px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 50px;
@@ -14,11 +14,15 @@
     text-decoration: none;
     font-weight: bold;
   }
+  a:hover {
+    color: #ff8c00;
+  }
 
   @media (max-width: $md) {
     grid-template-columns: auto auto auto;
   }
   @media (max-width: $sm) {
+    margin: 20px;
     padding: 20px;
     grid-template-columns: auto auto;
   }
