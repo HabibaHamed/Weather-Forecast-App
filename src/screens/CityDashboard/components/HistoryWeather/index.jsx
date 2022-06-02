@@ -19,7 +19,7 @@ const HistoryWeather = () => {
   const WIDTH = width > 0 ? width - 20 : width;
   const { weather = [] } = useSelector(selectCityWeatherHistory) || {};
 
-  const { ref: graphRef, render } = useD3((graph) => {
+  const { ref: graphRef } = useD3(weather, (graph) => {
     graph.selectAll("svg").remove();
     const svg = graph.append("svg").attr("width", WIDTH).attr("height", HEIGHT);
 
@@ -76,9 +76,8 @@ const HistoryWeather = () => {
   useEffect(() => {
     const currentDate = new Date();
 
-    const startDate = new Date(
-      Date.UTC(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
-    );
+    const startDate = new Date();
+    startDate.setDate(currentDate.getDate() - 30);
 
     dispatch(
       getCityWeatherHistory({
@@ -88,10 +87,6 @@ const HistoryWeather = () => {
       })
     );
   }, [dispatch, params]);
-
-  useEffect(() => {
-    if (weather) render();
-  }, [weather, render]);
 
   return (
     <div

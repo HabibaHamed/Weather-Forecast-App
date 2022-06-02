@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useD3 } from "../../../../hooks/useD3";
 import useResize from "../../../../hooks/useResize";
 import * as d3 from "d3";
@@ -17,7 +17,7 @@ const MonthlyWeather = () => {
 
   const { month: monthlyAverages = [] } = ClimateAverages[0] || {};
 
-  const { ref: graphRef, render } = useD3((graph) => {
+  const { ref: graphRef } = useD3(monthlyAverages, (graph) => {
     graph.selectAll("svg").remove();
     const svg = graph
       .append("svg")
@@ -88,10 +88,6 @@ const MonthlyWeather = () => {
       .attr("transform", `translate(${margin.left},0)`)
       .call(y_axis);
   });
-
-  useEffect(() => {
-    if (ClimateAverages) render();
-  }, [ClimateAverages, render]);
 
   return (
     <div

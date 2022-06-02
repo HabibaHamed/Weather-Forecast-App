@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useD3 } from "../../../../hooks/useD3";
 import { selectCurrentCityWeather } from "../../../../redux/selectors";
@@ -8,7 +7,7 @@ const HumidityGraph = () => {
   const { current_condition } = useSelector(selectCurrentCityWeather) || {};
   const { humidity } = current_condition?.[0] || {};
 
-  const { ref: graphRef, render } = useD3((graph) => {
+  const { ref: graphRef } = useD3(humidity, (graph) => {
     graph.selectAll("svg").remove();
     const humidityWidth = (humidity / 100) * 200;
     const svg = graph.append("svg").attr("width", 180).attr("height", 105);
@@ -33,10 +32,6 @@ const HumidityGraph = () => {
       .attr("font-weight", "bold")
       .text(`${humidity}%`);
   });
-
-  useEffect(() => {
-    if (humidity) render();
-  }, [humidity]);
 
   return (
     <div className="card-dashboard-highlights">
